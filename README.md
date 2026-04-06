@@ -24,6 +24,13 @@
 - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
 # Setting up nanochat for inferencing
+## Installing dependencies
+Per the nanochat README, it prefers using uv package manager:
+- pip install uv
+- uv sync --extra gpu
+- source .venv/bin/activate
+
+## Setting up pre-trained weights
 Nanochat is meant for training, so using pretrained weights is a little complicated. I chose weights from https://huggingface.co/sdobson/nanochat because Karpathy's weights from https://huggingface.co/karpathy/nanochat-d32/tree/main were too large.
 
 In your GCP VM:
@@ -32,4 +39,6 @@ In your GCP VM:
 - huggingface-cli download sdobson/nanochat meta_000650.json --local-dir ~/.cache/nanochat/chatsft_checkpoints/d20
 - huggingface-cli download sdobson/nanochat tokenizer.pkl --local-dir ~/.cache/nanochat/tokenizer
 - huggingface-cli download sdobson/nanochat token_bytes.pt --local-dir ~/.cache/nanochat/tokenizer
-- Now that the model weights and metadata is in the correct place, run the model: NANOCHAT_DTYPE=bfloat16 python -m scripts.chat_cli --model-tag d20
+
+## Running for inferencing
+NANOCHAT_DTYPE=bfloat16 python -m scripts.chat_cli --model-tag d20
