@@ -23,7 +23,7 @@
 - source nanochat_baseline/bin/activate
 - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
-# Setting up nanochat for inferencing
+# Setting up nanochat for inferencing and fine-tuning
 ## Installing dependencies
 Per the nanochat README, it prefers using uv package manager:
 - pip install uv
